@@ -10,7 +10,7 @@ SupportIQ is an AI-powered customer support platform designed to classify custom
 - Escalate uncertain or sensitive requests to human agents.
 - Build secure, reliable, and testable AI workflows.
 
-## 🛠️ Planned Tech Stack
+## 🛠️ Tech Stack
 
 - **Language:** Python
 - **Backend:** FastAPI
@@ -25,31 +25,72 @@ SupportIQ is an AI-powered customer support platform designed to classify custom
 
 ## 🏗️ Development Roadmap
 
-- [ ] **L0:** Foundations, project setup, testing, and CI
-- [ ] **L1:** Ticket management, authentication, and authorization
-- [ ] **L2:** LLM integration and structured outputs
-- [ ] **L3:** Knowledge base and retrieval
-- [ ] **L4:** Grounded responses, citations, and abstention
-- [ ] **L5:** Workflow orchestration and reliability
-- [ ] **L6:** Tool execution and human approvals
-- [ ] **L7:** Safety and security hardening
-- [ ] **L8:** Observability, cost, and quality evaluation
-- [ ] **L9:** Review interface and feedback
-- [ ] **L10:** Deployment and final evaluation
+- [x] **L0 — Foundations:** Project setup, configuration, Docker, PostgreSQL connectivity, and verified tests
+- [ ] **L1 — Ticket Management:** Ticket CRUD, authentication, and authorization
+- [ ] **L2 — LLM Integration:** Model integration and structured outputs
+- [ ] **L3 — Knowledge Base:** Document ingestion and retrieval
+- [ ] **L4 — Grounded Responses:** Citations, validation, and abstention
+- [ ] **L5 — Workflow Orchestration:** State management, retries, and reliability
+- [ ] **L6 — Tool Execution:** Controlled tool use and human approvals
+- [ ] **L7 — Safety & Security:** Input validation, access control, and security hardening
+- [ ] **L8 — Observability & Evaluation:** Logging, cost tracking, and quality evaluation
+- [ ] **L9 — Review Interface:** Human review and feedback
+- [ ] **L10 — Deployment:** Production deployment and final evaluation
+
+## 🧱 Level 0 — Foundation Setup
+
+The project foundation includes:
+
+- FastAPI application and health endpoint.
+- Configuration management using Pydantic Settings.
+- Asynchronous SQLAlchemy database sessions.
+- PostgreSQL 17 running in Docker.
+- pgvector-enabled PostgreSQL image.
+- Docker Compose configuration.
+- Persistent database volume.
+- PostgreSQL health check.
+- Python-to-PostgreSQL integration test.
+
+### Run PostgreSQL
+
+Start the database container:
+
+```bash
+docker compose up -d postgres
+```
+
+Check its status:
+
+```bash
+docker compose ps
+```
+
+The PostgreSQL container should report a healthy status.
+
+### Run Tests
+
+Run the complete test suite:
+
+```bash
+python -m pytest -v
+```
 
 ## 🔒 Security Principles
 
-- Protect credentials and sensitive information.
-- Enforce authentication and authorization.
-- Validate AI-generated outputs.
+- Keep credentials and sensitive information out of Git.
+- Store local secrets in `.env` and commit only `.env.example`.
+- Enforce authentication and authorization for protected operations.
+- Validate AI-generated outputs before using them.
 - Require appropriate approval for sensitive actions.
 - Test failure scenarios and prevent unsafe automation.
 
 ## 🚀 Project Status
 
-**Current stage:** L0 — Foundations and setup.
+**Current stage:** Level 0 — Foundation setup verified.
 
-This project is being developed incrementally, with automated tests and validation at every stage.
+Docker Desktop is operational, PostgreSQL is running in a container, and the database connection integration test has passed.
+
+Remaining foundation checks, such as linting, CI configuration, and documentation validation, should be completed before considering every Level 0 task finished.
 
 ## 📌 Future Goal
 
